@@ -1,4 +1,27 @@
+import { useEffect, useState } from "react";
+
 function App() {
+   const [allSectors, setSectors] = useState([]);
+   const [userInfo, setUserInfo] = useState({
+      name: "",
+      sectors: "",
+      agreed: false,
+   });
+
+   useEffect(() => {
+      const getSectors = async () => {
+         try {
+            const data = await fetch("http://localhost:9000/sectors");
+            const allSectors = await data.json();
+            setSectors(allSectors);
+         } catch (error) {
+            console.log(error.message);
+         }
+      };
+
+      getSectors();
+   }, []);
+
    return (
       <div className="background md:h-screen">
          <section className="md:w-[60rem] md:h-[50rem] mx-auto h-screen mmd:py-32 py-40">
@@ -29,10 +52,17 @@ function App() {
                      id="sectors"
                      className="md:px-4 px-2 md:py-4 py-3 md:w-[43.5%] w-[73%] border border-slate-300 focus:outline-0 rounded-md bg-gray-50 md:ml-2 ml-1 md:text-xl"
                   >
-                     <optgroup label="many">Many</optgroup>
-                     <option value="">Optisonsa</option>
-                     <option value="">Oa</option>
-                     <option value="">Optisonsa</option>
+                     {allSectors?.map((data, i) => (
+                        <optgroup key={i + 5} label={Object.keys(data)}>
+                           {Object?.values(data).map((options) =>
+                              options?.map((opt, i) => (
+                                 <option key={i + 2} value={opt}>
+                                    {opt}
+                                 </option>
+                              )),
+                           )}
+                        </optgroup>
+                     ))}
                   </select>
                </div>
 

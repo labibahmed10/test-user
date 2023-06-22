@@ -1,7 +1,9 @@
 {
    "sectors": [
       {
-         "Manufacturing": ["Construction materials", "Electronics and Optics"],
+         "Manufacturing": ["Construction materials", "Electronics and Optics"]
+      },
+      {
          "Food and Beverage": [
             "Bakery & confectionery products",
             "Beverages",
@@ -10,7 +12,9 @@
             " Milk & dairy products",
             "Sweets & snack food",
             "Other"
-         ],
+         ]
+      },
+      {
          "Furniture": [
             "Bathroom/sauna",
             "Bedroom",
@@ -21,7 +25,9 @@
             "Other (Furniture)",
             "Outdoor",
             "Project furniture"
-         ],
+         ]
+      },
+      {
          "Machinery": [
             "Machinery components",
             "Machinery equipment/tools",
@@ -33,7 +39,9 @@
             "Metal structures",
             "Repair and maintenance service",
             "Other"
-         ],
+         ]
+      },
+      {
          "Metalworking": [
             "Construction of metal structures",
             "Houses and buildings",
@@ -43,7 +51,9 @@
             "Forgings, Fasteners",
             "Gas, Plasma, Laser cutting",
             "MIG, TIG, Aluminum welding"
-         ],
+         ]
+      },
+      {
          "Plastic and Rubber": [
             "Packaging",
             "Plastic goods",
@@ -52,14 +62,18 @@
             "Moulding",
             "Plastics welding and processing",
             "Plastic profiles"
-         ],
+         ]
+      },
+      {
          "Printing": [
             "Advertising",
             "Book/Periodicals printing",
             "Labelling and packaging printing"
-         ],
-         "Textile and Clothing": ["Clothing", "Textile"],
-         "Wood": ["Other (Wood)", "Wooden building materials", "Wooden houses"],
+         ]
+      },
+      { "Textile and Clothing": ["Clothing", "Textile"] },
+      { "Wood": ["Other (Wood)", "Wooden building materials", "Wooden houses"] },
+      {
          "Service": [
             "Business services",
             "Engineering",
@@ -70,8 +84,13 @@
             "Telecommunications",
             "Tourism",
             "Translation services"
-         ],
-         "Transport and Logistics": ["Air", "Rail", "Road", "Water"]
+         ]
+      },
+      { "Transport and Logistics": ["Air", "Rail", "Road", "Water"] }
+   ],
+   "users": [
+      {
+         "name": "as"
       }
    ]
 }
