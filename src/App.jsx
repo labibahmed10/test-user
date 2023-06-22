@@ -72,8 +72,7 @@ function App() {
                   </label>
 
                   <select
-                     name="sectors"
-                     id="sectors"
+                     name="sector"
                      className="md:px-4 px-2 md:py-4 py-3 md:w-[43.5%] w-[73%] border border-slate-300 focus:outline-0 rounded-md bg-gray-50 md:ml-2 ml-1 md:text-xl"
                      value={userInfo.sector}
                      onChange={handleUserInfo}
