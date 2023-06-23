@@ -1,18 +1,26 @@
 import { useEffect, useState } from "react";
 import postUserInfo from "./utils/postUserInfo";
 import getSectors from "./utils/getSectors";
+import editUser from "./utils/editUser";
+import getUsers from "./utils/getUsers";
 
 function App() {
+   const [update, isUpdate] = useState(false);
+   const [idToUpdate, setId] = useState("");
+   const [users, setUsers] = useState([]);
    const [allSectors, setSectors] = useState([]);
+
    const [userInfo, setUserInfo] = useState({
       name: "",
       sector: "",
       agreed: false,
+      id: 0,
    });
 
    useEffect(() => {
       getSectors(setSectors);
-   }, []);
+      getUsers(setUsers);
+   }, [userInfo]);
 
    const handleUserInfo = (e) => {
       setUserInfo({
@@ -21,9 +29,23 @@ function App() {
       });
    };
 
+   let highestId = users?.reduce((max, obj) => {
+      return obj.id > max ? obj.id : max;
+   }, 0);
+
    const handleSubmit = async (e) => {
       e.preventDefault();
-      await postUserInfo(userInfo, setUserInfo);
+
+      update
+         ? await editUser(userInfo, idToUpdate, setUserInfo)
+         : await postUserInfo(
+              { ...userInfo, id: (highestId += 1) },
+              update,
+              isUpdate,
+              setUsers,
+              setId,
+              setUserInfo,
+           );
    };
 
    return (
@@ -89,7 +111,7 @@ function App() {
 
                <input
                   type="submit"
-                  value="Save"
+                  value={update ? "Update" : "Save"}
                   className="bg-[#003049] text-slate-50 md:text-2xl text-xl md:px-6 px-5 md:py-2 py-1 rounded-full md:mt-8 mt-5 md:ml-12 ml-4 cursor-pointer"
                />
             </form>

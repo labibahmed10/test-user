@@ -8,6 +8,4 @@ const getSectors = async (setSectors) => {
    }
 };
 
-getSectors();
-
 export default getSectors;
