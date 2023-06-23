@@ -1,6 +1,6 @@
 import Swal from "sweetalert2";
 
-const editUser = async (userData, id, setUserInfo) => {
+const editUser = async (userData, id, setUserInfo, isUpdate) => {
    const data = await fetch(`http://localhost:9000/users/${id}`, {
       method: "PATCH",
       headers: {
@@ -19,7 +19,7 @@ const editUser = async (userData, id, setUserInfo) => {
          agreed: false,
          id: 0,
       });
-
+      isUpdate(false);
       Swal.fire({
          title: "User post Was Updated!",
          icon: "success",

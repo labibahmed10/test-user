@@ -37,7 +37,7 @@ function App() {
       e.preventDefault();
 
       update
-         ? await editUser(userInfo, idToUpdate, setUserInfo)
+         ? await editUser(userInfo, idToUpdate, setUserInfo, isUpdate)
          : await postUserInfo(
               { ...userInfo, id: (highestId += 1) },
               update,

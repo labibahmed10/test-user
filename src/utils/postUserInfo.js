@@ -18,7 +18,7 @@ const postUserInfo = async (userData, update, isUpdate, setUsers, setId, setUser
          icon: "warning",
          showCancelButton: true,
          cancelButtonText: "Yes, Edit now!",
-         confirmButtonColor: "#d33",
+         confirmButtonColor: "#d22",
          cancelButtonColor: "#3085d6",
          confirmButtonText: "No, Not now!",
       }).then((result) => {
