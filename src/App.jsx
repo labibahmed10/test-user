@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import postUserInfo from "./utils/postUserInfo";
+import getSectors from "./utils/getSectors";
 
 function App() {
    const [allSectors, setSectors] = useState([]);
@@ -9,17 +11,7 @@ function App() {
    });
 
    useEffect(() => {
-      const getSectors = async () => {
-         try {
-            const data = await fetch("http://localhost:9000/sectors");
-            const allSectors = await data.json();
-            setSectors(allSectors);
-         } catch (error) {
-            console.log(error.message);
-         }
-      };
-
-      getSectors();
+      getSectors(setSectors);
    }, []);
 
    const handleUserInfo = (e) => {
@@ -31,17 +23,7 @@ function App() {
 
    const handleSubmit = async (e) => {
       e.preventDefault();
-
-      const postData = await fetch("http://localhost:9000/users", {
-         method: "POST",
-         headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-         },
-         body: JSON.stringify(userInfo),
-      });
-
-      await postData.json();
+      await postUserInfo(userInfo, setUserInfo);
    };
 
    return (
@@ -61,6 +43,7 @@ function App() {
                      name="name"
                      id="name"
                      value={userInfo.name}
+                     required
                      className="md:ml-2 ml-1 border border-slate-300 bg-gray-50 rounded-md focus:outline-0 md:px-3 px-2 md:py-3 py-2 md:w-[45%] text-xl"
                      onChange={handleUserInfo}
                   />
@@ -76,6 +59,7 @@ function App() {
                      className="md:px-4 px-2 md:py-4 py-3 md:w-[43.5%] w-[73%] border border-slate-300 focus:outline-0 rounded-md bg-gray-50 md:ml-2 ml-1 md:text-xl"
                      value={userInfo.sector}
                      onChange={handleUserInfo}
+                     required
                   >
                      {allSectors?.map((data, i) => (
                         <optgroup key={i + 5} label={Object.keys(data)}>
@@ -94,6 +78,7 @@ function App() {
                      type="checkbox"
                      name="agreed"
                      checked={userInfo.agreed}
+                     required
                      className="md:w-6 w-4 md:h-6 h-4 rounded-full md:mr-3 mr-2"
                      onChange={handleUserInfo}
                   ></input>
