@@ -2,7 +2,7 @@ import Swal from "sweetalert2";
 import getUsers from "./getUsers";
 
 const postUserInfo = async (userData, update, isUpdate, setUsers, setId, setUserInfo) => {
-   const data = await fetch("http://localhost:9000/users", {
+   const data = await fetch("https://test-api-xbl0.onrender.com/users", {
       method: "POST",
       headers: {
          Accept: "application/json",

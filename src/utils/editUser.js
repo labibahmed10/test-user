@@ -1,7 +1,7 @@
 import Swal from "sweetalert2";
 
 const editUser = async (userData, id, setUserInfo, isUpdate) => {
-   const data = await fetch(`http://localhost:9000/users/${id}`, {
+   const data = await fetch(`https://test-api-xbl0.onrender.com/users/${id}`, {
       method: "PATCH",
       headers: {
          Accept: "application/json",
