@@ -74,7 +74,7 @@ function App() {
                      id="name"
                      value={userInfo.name}
                      required
-                     className="md:ml-2 ml-1 border border-slate-300 bg-gray-50 rounded-md focus:outline-0 md:px-3 px-2 md:py-3 py-2 md:w-[45%] text-xl"
+                     className="md:ml-2 ml-1 border border-slate-300 bg-gray-50 rounded-md focus:outline-0 md:px-3 px-2 md:py-3 py-2 md:w-[45%] w-[75%] text-xl"
                      onChange={handleUserInfo}
                   />
                </div>
@@ -86,7 +86,7 @@ function App() {
 
                   <select
                      name="sector"
-                     className="md:px-4 px-2 md:py-4 py-3 md:w-[43.5%] w-[73%] border border-slate-300 focus:outline-0 rounded-md bg-gray-50 md:ml-2 ml-1 md:text-xl"
+                     className="md:px-4 px-2 md:py-4 py-3 md:w-[43.5%] w-[71%] border border-slate-300 focus:outline-0 rounded-md bg-gray-50 md:ml-2 ml-1 md:text-xl"
                      required
                      value={userInfo.sector}
                      onChange={handleUserInfo}
