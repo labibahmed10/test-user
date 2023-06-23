@@ -3,6 +3,7 @@ import postUserInfo from "./utils/postUserInfo";
 import getSectors from "./utils/getSectors";
 import editUser from "./utils/editUser";
 import getUsers from "./utils/getUsers";
+import Swal from "sweetalert2";
 
 function App() {
    const [update, isUpdate] = useState(false);
@@ -35,6 +36,13 @@ function App() {
 
    const handleSubmit = async (e) => {
       e.preventDefault();
+
+      if (userInfo.sector === "") {
+         return Swal.fire({
+            title: "Kindly fill the form correctly!",
+            icon: "warning",
+         });
+      }
 
       update
          ? await editUser(userInfo, idToUpdate, setUserInfo, isUpdate)
@@ -79,9 +87,9 @@ function App() {
                   <select
                      name="sector"
                      className="md:px-4 px-2 md:py-4 py-3 md:w-[43.5%] w-[73%] border border-slate-300 focus:outline-0 rounded-md bg-gray-50 md:ml-2 ml-1 md:text-xl"
+                     required
                      value={userInfo.sector}
                      onChange={handleUserInfo}
-                     required
                   >
                      {allSectors?.map((data, i) => (
                         <optgroup key={i + 5} label={Object.keys(data)}>
